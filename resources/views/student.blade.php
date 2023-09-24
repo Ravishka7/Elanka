@@ -2,7 +2,7 @@
 
 <x-app-layout>
 
-<style>
+{{-- <style>
   /* Compiled dark classes from Tailwind */
   .dark .dark\:divide-gray-700 > :not([hidden]) ~ :not([hidden]) {
     border-color: rgba(55, 65, 81);
@@ -122,7 +122,7 @@
           width: calc(100% - 16rem);
       }        
   }
-</style>
+</style> --}}
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-100 text-black dark:text-white">
 
@@ -132,12 +132,12 @@
                 <ul class="flex flex-col py-4 space-y-1">
                     <li class="px-5 hidden md:block">
                     <div class="flex flex-row items-center h-8">
-                        <div class="text-sm font-light tracking-wide text-gray-100 uppercase">Welcome {{ Auth::user()->name }}</div>
+                        <div class="text-md font-dark tracking-wide text-blue-500 uppercase">Welcome {{ Auth::user()->name }}</div>
                     </div>
                     </li>
                     <br>
                     <li>
-                    <a href="{{ route('student') }}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                    <a href="{{ route('student') }}" class="relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-black-600 hover:text-black-800 border-l-4 border-transparent hover:border-black-500 dark:hover:border-gray-800 pr-6">
                         <span class="inline-flex justify-center items-center ml-4">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                         </span>
@@ -193,6 +193,16 @@
             <!-- ./Sidebar -->
 
         <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
+          <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>Breeze Admin</title>
+<link rel="stylesheet" href="user/assets/vendors/mdi/css/materialdesignicons.min.css" />
+<link rel="stylesheet" href="user/assets/vendors/flag-icon-css/css/flag-icon.min.css" />
+<link rel="stylesheet" href="user/assets/vendors/css/vendor.bundle.base.css" />
+<link rel="stylesheet" href="user/assets/vendors/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" href="user/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
+<link rel="stylesheet" href="user/assets/css/style.css" />
+<link rel="shortcut icon" href="user/assets/images/favicon.png" />
 
             
 
@@ -200,7 +210,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
     
           <!-- Social Traffic -->
-          <div class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-blue-600  w-full shadow-lg rounded">
+          {{-- <div class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-blue-600  w-full shadow-lg rounded">
             <div class="rounded-t mb-0 px-0 border-0">
               <div class="flex flex-wrap items-center px-4 py-2">
                 <div class="relative w-full max-w-full flex-grow flex-1">
@@ -273,9 +283,35 @@
                 </table>
               </div>
             </div>
-          </div>
+          </div> --}}
           
           <!-- ./Social Traffic -->
+          {{-- <div class="row">
+
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="col-xl-8 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Doughnut chart</h4>
+                  <canvas id="doughnutChart" style="height: 250px;"></canvas>
+                </div>
+                </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Bar chart</h4>
+                    <canvas id="barChart" style="height: 230px;"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              
+
+            </div>
+          </div> --}}
 
 
           <!-- Recent Activities -->
@@ -354,97 +390,409 @@
               </div>
             </div>
           </div>
+
+          
           </div>
           <!-- ./Recent Activities -->
 
           <!-- Task Summaries -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4 gap-4 text-black">
-          <div class="md:col-span-2 xl:col-span-3">
-            <h3 class="text-lg font-semibold">Task summaries</h3>
-          </div>
-          <div class="md:col-span-2 xl:col-span-1">
-            <div class="rounded bg-red-500 ">
-              <div class="flex justify-between py-1 text-black dark:text-white">
-                <h3 class="text-sm font-semibold">Tasks in TO DO</h3>
-                <svg class="h-4 fill-current text-gray-600 dark:text-gray-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z" /></svg>
-              </div>
-              <div class="text-sm text-black dark:text-gray-50 mt-2">
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">Submit Math Quiz</div>
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">Submit a report on science practicals</div>
-                
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">Submit a presentaion in IT</div>
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">
-                  The three main quizes
-                  <div class="text-gray-500 dark:text-gray-200 mt-2 ml-2 flex justify-between items-start">
-                    <span class="text-xs flex items-center">
-                      <svg class="h-4 fill-current mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M11 4c-3.855 0-7 3.145-7 7v28c0 3.855 3.145 7 7 7h28c3.855 0 7-3.145 7-7V11c0-3.855-3.145-7-7-7zm0 2h28c2.773 0 5 2.227 5 5v28c0 2.773-2.227 5-5 5H11c-2.773 0-5-2.227-5-5V11c0-2.773 2.227-5 5-5zm25.234 9.832l-13.32 15.723-8.133-7.586-1.363 1.465 9.664 9.015 14.684-17.324z" /></svg>
-                      0/3
-                    </span>
-                  </div>
+        
+        <!-- ./Task Summaries -->
+
+        <div class="row">
+          <div class="col-xl-8 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body px-0 overflow-auto">
+                <h4 class="card-title pl-4">Submissions History</h4>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class="bg-light">
+                      <tr>
+                        <th>Name</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                        <th>Grade</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="table-user-name ml-3">
+                              <p class="mb-0 font-weight-medium"> Science Monthly Test </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>Science</td>
+                        <td>
+                          <div class="badge badge-inverse-success"> Completed </div>
+                        </td>
+                        <td>77%</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="table-user-name ml-3">
+                              <p class="mb-0 font-weight-medium"> IT Presenteation </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>IT</td>
+                        <td>
+                          <div class="badge badge-inverse-success"> Completed </div>
+                        </td>
+                        <td>80%</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="table-user-name ml-3">
+                              <p class="mb-0 font-weight-medium"> Health Science Research Report </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>Health Science & Studies</td>
+                        <td>
+                          <div class="badge badge-inverse-success"> Completed </div>
+                        </td>
+                        <td>95%</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="table-user-name ml-3">
+                              <p class="mb-0 font-weight-medium"> History 2021 MCQ Paper </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>History</td>
+                        <td>
+                          <div class="badge badge-inverse-success"> Completed </div>
+                        </td>
+                        <td>90%</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="table-user-name ml-3">
+                              <p class="mb-0 font-weight-medium"> Mathematics 2022 Past Paper </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>Mathematics</td>
+                        <td>
+                          <div class="badge badge-inverse-success"> Completed </div>
+                        </td>
+                        <td>97%</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="table-user-name ml-3">
+                              <p class="mb-0 font-weight-medium"> Mathematics 2021 Past Paper </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>Science</td>
+                        <td>
+                          <div class="badge badge-inverse-success"> Completed </div>
+                        </td>
+                        <td>95%</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+                <a class="text-black mt-3 d-block pl-4" href="#">
+                  <span class="font-weight-medium h6">View all history</span>
+                  <i class="mdi mdi-chevron-right"></i></a>
               </div>
             </div>
           </div>
-          <div>
-            <div class="rounded bg-blue-500  p-3">
-              <div class="flex justify-between py-1 text-black dark:text-white">
-                <h1 class="text-sm font-semibold">Tasks in DEVELOPMENT</h1>
-                <svg class="h-4 fill-current text-gray-600 dark:text-gray-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z" /></svg>
-              </div>
-              <div class="text-sm text-black dark:text-gray-50 mt-2">
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">IT Presentaion</div>
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">Remove analytics code</div>
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">
-                  Do the math quiz
-                  <div class="flex justify-between items-start mt-2 ml-2 text-white text-xs">
-                    <span class="bg-pink-600 rounded p-1 text-xs flex items-center">
-                      <svg class="h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c-.8 0-1.5.7-1.5 1.5v.688C7.344 4.87 5 7.62 5 11v4.5l-2 2.313V19h18v-1.188L19 15.5V11c0-3.379-2.344-6.129-5.5-6.813V3.5c0-.8-.7-1.5-1.5-1.5zm-2 18c0 1.102.898 2 2 2 1.102 0 2-.898 2-2z" /></svg>
-                      2
-                    </span>
+          <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title font-weight-medium"> Time Table </div>
+                <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
+                  <div class="pt-2">
+                    <h5 class="mb-0">Mathematics</h5>
+                    <p class="mb-0 text-muted">Today</p>
+                    <h6 class="mb-0">8.00 - 8.45am</h6>
                   </div>
                 </div>
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">Check the meta tags</div>
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">
-                  Practical Reports
-                  <div class="text-gray-500 mt-2 ml-2 flex justify-between items-start">
-                    <span class="text-xs flex items-center">
-                      <svg class="h-4 fill-current mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M11 4c-3.855 0-7 3.145-7 7v28c0 3.855 3.145 7 7 7h28c3.855 0 7-3.145 7-7V11c0-3.855-3.145-7-7-7zm0 2h28c2.773 0 5 2.227 5 5v28c0 2.773-2.227 5-5 5H11c-2.773 0-5-2.227-5-5V11c0-2.773 2.227-5 5-5zm25.234 9.832l-13.32 15.723-8.133-7.586-1.363 1.465 9.664 9.015 14.684-17.324z" /></svg>
-                      2/3
-                    </span>
+                <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
+                  <div class="pt-2">
+                    <h5 class="mb-0">History</h5>
+                    <p class="mb-0 text-muted">Today</p>
+                    <h6 class="mb-0">8.45 - 9.30am</h6>
                   </div>
                 </div>
-                
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="rounded bg-green-500  p-3">
-              <div class="flex justify-between py-1 text-black dark:text-white">
-                <h1 class="text-sm font-semibold">Finished Tasks</h1>
-                <svg class="h-4 fill-current text-gray-600 dark:text-gray-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z" /></svg>
-              </div>
-              <div class="text-sm text-black dark:text-gray-50 mt-2">
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">Delete all references from the wiki</div>
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">Remove analytics code</div>
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">Do a mobile first layout</div>
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">Check the meta tags</div>
-                <div class="hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 cursor-pointer">
-                  Think more tasks for this example
-                  <div class="text-gray-500 dark:text-gray-200 mt-2 ml-2 flex justify-between items-start">
-                    <span class="text-xs flex items-center">
-                      <svg class="h-4 fill-current mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M11 4c-3.855 0-7 3.145-7 7v28c0 3.855 3.145 7 7 7h28c3.855 0 7-3.145 7-7V11c0-3.855-3.145-7-7-7zm0 2h28c2.773 0 5 2.227 5 5v28c0 2.773-2.227 5-5 5H11c-2.773 0-5-2.227-5-5V11c0-2.773 2.227-5 5-5zm25.234 9.832l-13.32 15.723-8.133-7.586-1.363 1.465 9.664 9.015 14.684-17.324z" /></svg>
-                      3/3
-                    </span>
+                <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
+                  <div class="pt-2">
+                    <h5 class="mb-0">Science</h5>
+                    <p class="mb-0 text-muted">Today</p>
+                    <h6 class="mb-0">9.30 - 10.15am</h6>
                   </div>
                 </div>
-                
+                <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
+                  <div class="pt-2">
+                    <h5 class="mb-0">English</h5>
+                    <p class="mb-0 text-muted">Today</p>
+                    <h6 class="mb-0">10.45 - 11.30am</h6>
+                  </div>
+                </div>
+                <a class="text-black mt-3 d-block font-weight-medium h6" href="#">View all <i class="mdi mdi-chevron-right"></i></a>
               </div>
             </div>
           </div>
         </div>
-        <!-- ./Task Summaries -->
+
+
+        <!-- TODO Activities -->
+        <div class="row">
+
+          <div class="col-xl-4 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title text-black">To do Task List</h4>
+                <p class="text-muted">Created by student001</p>
+                <div class="list-wrapper">
+                  <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" /> submit math quiz </label>
+                        <span class="list-time">4 Hours Ago</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" /> complete science presentation </label>
+                        <span class="list-time">6 Hours Ago</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" /> comlete history homework </label>
+                        <span class="list-time">8 Hours Ago</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" /> sent email to classteacher </label>
+                        <span class="list-time">8 Hours Ago</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="add-items d-flex flex-wrap flex-sm-nowrap">
+                  <input type="text" class="form-control todo-list-input flex-grow" placeholder="Add task name" />
+                  <button class="add btn btn-primary font-weight-regular text-nowrap" id="add-task"> Add Task </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title text-black">Development Task List</h4>
+                <p class="text-muted">Created by student001</p>
+                <div class="list-wrapper">
+                  <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" /> it presenteation </label>
+                        <span class="list-time">4 Hours Ago</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" /> check emails </label>
+                        <span class="list-time">6 Hours Ago</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" /> download monthly report </label>
+                        <span class="list-time">8 Hours Ago</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" /> complete science mini test </label>
+                        <span class="list-time">8 Hours Ago</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="add-items d-flex flex-wrap flex-sm-nowrap">
+                  <input type="text" class="form-control todo-list-input flex-grow" placeholder="Add task name" />
+                  <button class="add btn btn-primary font-weight-regular text-nowrap" id="add-task"> Add Task </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-4 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title text-black">Finished Task List</h4>
+                <p class="text-muted">Created by student001</p>
+                <div class="list-wrapper">
+                  <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" checked/> submit math quiz </label>
+                        <span class="list-time">4 Hours Ago</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" checked/> complete science presentation </label>
+                        <span class="list-time">6 Hours Ago</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" checked/> complete history homework </label>
+                        <span class="list-time">8 Hours Ago</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="checkbox" type="checkbox" checked/> sent email to classteacher </label>
+                        <span class="list-time">8 Hours Ago</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="add-items d-flex flex-wrap flex-sm-nowrap">
+                  <input type="text" class="form-control todo-list-input flex-grow" placeholder="Add task name" />
+                  <button class="add btn btn-primary font-weight-regular text-nowrap" id="add-task"> Add Task </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ./TODO Activities -->
+
+        <div class="row">
+           <div class="col-xl-4 col-md-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title text-black">Attendence</h4>
+                <p class="text-muted pb-2">Jan 01 2019 - Dec 31 2019</p>
+                <canvas id="surveyBar"></canvas>
+                <div class="row border-bottom pb-3 pt-4 align-items-center mx-0">
+                  <div class="col-sm-9 pl-0">
+                    <div class="d-flex">
+                      <div class="pl-2">
+                        <h6 class="m-0">Weekly Attendance</h6>
+                        <p class="m-0">Good</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 pl-0 pl-sm-3">
+                    <div class="badge badge-inverse-success mt-3 mt-sm-0"> 85% </div>
+                  </div>
+                </div>
+                <div class="row border-bottom pb-3 pt-4 align-items-center mx-0">
+                  <div class="col-sm-9 pl-0">
+                    <div class="d-flex">
+                      <div class="pl-2">
+                        <h6 class="m-0">Monthly Attendance</h6>
+                        <p class="m-0">Good</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 pl-0 pl-sm-3">
+                    <div class="badge badge-inverse-success mt-3 mt-sm-0"> 90% </div>
+                  </div>
+                </div>
+                <div class="row py-3 align-items-center mx-0">
+                  <div class="col-sm-9 pl-0">
+                    <div class="d-flex">
+                      <div class="pl-2">
+                        <h6 class="m-0">Yearly Attendance</h6>
+                        <p class="m-0">Good</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 pl-0 pl-sm-3">
+                    <div class="badge badge-inverse-success mt-3 mt-sm-0"> 80% </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <div class="col-xl-4 col-md-6 grid-margin stretch-card">
+            <!--datepicker-->
+            <div class="card">
+              <div class="card-body">
+                <div id="inline-datepicker" class="datepicker table-responsive"></div>
+              </div>
+            </div>
+            <!--datepicker ends-->
+          </div>
+          <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title font-weight-medium"> Upcomming Events </div>
+                <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
+                  <img class="survey-img mb-lg-3" src="user/assets/images/dashboard/extravaganza.jpeg "style="height: 70px; width: 90px;" alt="" />
+                  <div class="pt-2">
+                    <h5 class="mb-0">Extravanganza</h5>
+                    <p class="mb-0 text-muted">Havelock park</p>
+                    <h5 class="mb-0">19th November</h5>
+                  </div>
+                </div>
+                <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
+                  <img class="survey-img mb-lg-3" src="user/assets/images/dashboard/diwali.jpeg" style="height: 70px; width: 90px;" alt="" />
+                  <div class="pt-2">
+                    <h5 class="mb-0">Diwali Festival</h5>
+                    <p class="mb-0 text-muted">School Main Hall</p>
+                    <h5 class="mb-0">22nd september</h5>
+                  </div>
+                </div>
+                <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
+                  <img class="survey-img mb-lg-3" src="user/assets/images/dashboard/acosticnight.jpeg" style="height: 70px; width: 90px;" alt="" />
+                  <div class="pt-2">
+                    <h5 class="mb-0">Acoustic Night</h5>
+                    <p class="mb-0 text-muted">The Thabrobane</p>
+                    <h5 class="mb-0">13th october</h5>
+                  </div>
+                </div>
+                <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
+                  <img class="survey-img mb-lg-3" src="user/assets/images/dashboard/halloween.jpeg" style="height: 70px; width: 90px;" alt="" />
+                  <div class="pt-2">
+                    <h5 class="mb-0">Halloween Night</h5>
+                    <p class="mb-0 text-muted">School Main Hall</p>
+                    <h5 class="mb-0">13th November</h5>
+                  </div>
+                </div>
+                <a class="text-black mt-3 d-block font-weight-medium h6" href="#">View all <i class="mdi mdi-chevron-right"></i></a>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+
+
     </div>
  </div>
+
+ 
+ 
 
 
 
@@ -473,6 +821,27 @@
       }
     }
   </script>
+   <script src="user/assets/vendors/js/vendor.bundle.base.js"></script>
+   <!-- endinject -->
+   <!-- Plugin js for this page -->
+   <script src="user/assets/vendors/chart.js/Chart.min.js"></script>
+   <script src="user/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+   <script src="user/assets/vendors/flot/jquery.flot.js"></script>
+   <script src="user/assets/vendors/flot/jquery.flot.resize.js"></script>
+   <script src="user/assets/vendors/flot/jquery.flot.categories.js"></script>
+   <script src="user/assets/vendors/flot/jquery.flot.fillbetween.js"></script>
+   <script src="user/assets/vendors/flot/jquery.flot.stack.js"></script>
+   <script src="user/assets/vendors/flot/jquery.flot.pie.js"></script>
+   <!-- End plugin js for this page -->
+   <!-- inject:js -->
+   <script src="user/assets/js/off-canvas.js"></script>
+   <script src="user/assets/js/hoverable-collapse.js"></script>
+   <script src="user/assets/js/misc.js"></script>
+   <!-- endinject -->
+   <!-- Custom js for this page -->
+   <script src="user/assets/js/dashboard.js"></script>
+   <script src="../../user//assets/js/chart.js"></script>
+   <!-- End custom js for this page -->
 
 </x-app-layout>
 
